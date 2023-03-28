@@ -3,9 +3,7 @@ const server = express();
 const joi = require('joi');
 server.use(express.json());
 
-server.post('/login', (req, res) => {
-
-})
+server.post('/login', (req, res) => {})
 
 server.post('/register', (req, res) => {
     const schema = joi.object({
