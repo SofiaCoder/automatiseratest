@@ -10,7 +10,7 @@ describe("Testing server enpoints", () => {
     })
 
     test('POST /register shoul respond 201 if good registration', async () => {
-        const respons = await (await request(server).post('/register')).send({username: 'Soffi', password: 'hemligt'});
+        const respons = await request(server).post('/register').send({username: 'Soffi', password: 'hemligt'});
 
         expect(respons.status).toBe(201);
     })
