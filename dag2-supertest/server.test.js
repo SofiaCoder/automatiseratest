@@ -14,4 +14,16 @@ describe("Testing server enpoints", () => {
 
         expect(respons.status).toBe(201);
     })
+
+    test('POST /login should respond with 400 if body is bad', async () => {
+        const respons = await request(server).post('/login').send({username: 'Soffi'});
+
+        expect(respons.status).toBe(400);
+    })
+
+    test('POST /login should respond with 200 if good login', async () => {
+        const respons = await request(server).post('/login').send({username: 'Soffi', password: 'hemligt'});
+
+        expect(respons.status).toBe(200);
+    })
 })
