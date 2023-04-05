@@ -1,24 +1,20 @@
 const express = require('express');
 const server = express();
-const joi = require('joi');
+const { validateAuth } = require('./validateAuth');
 server.use(express.json());
 
-server.post('/login', (req, res) => {})
+server.use(validateAuth)
+
+server.post('/login', (req, res) => {
+   console.log(req.body)
+
+    res.status(200).send('Logged in')
+})
 
 server.post('/register', (req, res) => {
-    const schema = joi.object({
-        username: joi.string().required(),
-        password: joi.string().required()
-    })
-
-    const { error, value } = schema.validate(req.body)
-    if(error) {
-        res.status(400).send(error.details[0].message)
-        return;
-    }
+   console.log(req.body)
 
     res.status(201).send('Registerd succesfully')
 })
-
 
 exports.server = server
